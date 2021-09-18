@@ -1,0 +1,5 @@
+LOG OF CHIRPANALYTICA-TRAINING: 
+Mi 15. Sep 18:08:34 CEST 2021
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  135k    0  135k    0     0   303k      0 --:--:-- --:--:-- --:--:--  303k

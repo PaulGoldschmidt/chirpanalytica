@@ -115,5 +115,5 @@ dmypy.json
 
 # Custom ignores
 backend/twittercredentials.json
-backend/traning/export/*
+backend/training/export/*
 backend/training/data/*

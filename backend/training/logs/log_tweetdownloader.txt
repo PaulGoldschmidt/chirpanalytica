@@ -1,0 +1,50 @@
+[nltk_data] Downloading package punkt to /home/paul/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package stopwords to /home/paul/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+Starting downloading tweets. Standby...
+Starttime:
+2021-09-15 18:08:36
+Read CSV with users.
+Downloading tweets from bettina_jarasch with the User-ID 748783193931653121 from the party Bündnis 90/Die Grünen and the display name Bettina_Jarasch.
+'str' object has no attribute 'decode'
+An error has occurred. Skipping account.
+Downloading tweets from ErikMarquardt with the User-ID 149441850 from the party Bündnis 90/Die Grünen and the display name ErikMarquardt.
+'str' object has no attribute 'decode'
+An error has occurred. Skipping account.
+Downloading tweets from JFroemmrich with the User-ID 581995746 from the party Bündnis 90/Die Grünen and the display name JFroemmrich.
+'str' object has no attribute 'decode'
+An error has occurred. Skipping account.
+Downloading tweets from violavoncramon with the User-ID 30507250 from the party Bündnis 90/Die Grünen and the display name ViolavonCramon.
+'str' object has no attribute 'decode'
+An error has occurred. Skipping account.
+Downloading tweets from wibkegt with the User-ID 17809381 from the party Bündnis 90/Die Grünen and the display name wibkegt.
+'str' object has no attribute 'decode'
+An error has occurred. Skipping account.
+Downloading tweets from fbrantner with the User-ID 32323724 from the party Bündnis 90/Die Grünen and the display name fbrantner.
+Traceback (most recent call last):
+  File "tweetdownloader.py", line 80, in <module>
+    status = api.get_status(tweet.id_str, tweet_mode="extended")
+  File "/home/paul/.local/lib/python3.8/site-packages/tweepy/binder.py", line 250, in _call
+    return method.execute()
+  File "/home/paul/.local/lib/python3.8/site-packages/tweepy/binder.py", line 183, in execute
+    resp = self.session.request(self.method,
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 533, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/lib/python3/dist-packages/requests/sessions.py", line 646, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/lib/python3/dist-packages/requests/adapters.py", line 439, in send
+    resp = conn.urlopen(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 665, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 376, in _make_request
+    self._validate_conn(conn)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 996, in _validate_conn
+    conn.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 314, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 74, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt

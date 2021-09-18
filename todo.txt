@@ -1,0 +1,8 @@
+TODO for Chirpanalytica
+
+Add progress bar
+Write twitter bot
+Some cleanup
+Transfer to GitHub
+Readme + Instructions
+Add unicorns

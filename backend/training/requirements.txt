@@ -1,0 +1,9 @@
+###### Requirements without specific version required ######`
+tweepy
+pathlib
+numpy
+datetime
+statistics
+flask
+nltk
+scikit

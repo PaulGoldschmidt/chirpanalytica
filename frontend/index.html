@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <title>Chirpanalyctica</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/c	ss" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="./css/predict.css">
+	<link rel="stylesheet" type="text/css" href="./css/switch.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+
+		var source = new EventSource("/progress");
+		source.onmessage = function(event) {
+			$('.progress-bar').css('width', event.data+'%').attr('aria-valuenow', event.data);
+			$('.progress-bar-label').text(event.data+'%');
+	
+			if(event.data == 100){
+				source.close()
+			}
+		}
+	</script>
+  </head>
+  <body>
+    <!-- <div class="progress"><div class="bar cdu" style="width:75%;"></div><div class="bar AfD" style="width:10%;"></div></div> -->
+    <section class="sec1 animated fadeIn">
+		<div id="requester-container">
+			<h1>Chirpanalyctica</h1>
+			<p style="margin-top:10px;margin-bottom:10px;">Der Wahl-O-Mat braucht dir zu lange zum Ausfüllen? Gebe deinen Twitter-Handle ein und wir finden heraus, welche Partei am besten zu dir passt!</p>
+			<form id="requester" method="get">
+				<input id="requester-name" name="name" type="text" placeholder="@maxmusternutzer"></input>
+				<input type="submit"></input>
+				<div id="loading" class="gone"></div>
+			</form>
+			<p style="margin-top:10px;margin-bottom:10px;">(Achtung: Es werden nur Accounts mit deutschsprachigen Tweets korrekt analysiert.)</p>
+			<p id="internal-error" class="gone">Leider ist ein interner Severfehler aufgetreten :(</p>
+		</div>
+
+		<div id="chart" class="gone">
+			<ul id="numbers">
+				<li><span></span></li>
+				<li><span>90%</span></li>
+				<li><span>80%</span></li>
+				<li><span>70%</span></li>
+				<li><span>60%</span></li>
+				<li><span>50%</span></li>
+				<li><span>40%</span></li>
+				<li><span>30%</span></li>
+				<li><span>20%</span></li>
+				<li><span>10%</span></li>
+				<li><span></span></li>
+			</ul>
+			<div class="progress" style="width: 50%; margin: 50px;">
+				<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+					<span class="progress-bar-label">0%</span>
+				</div>
+			</div>
+			<ul id="bars">
+				<p>In Arbeit...</p>
+			</ul>
+		</div>
+    </section>
+    <section class="sec3">
+		<p>&copy; 2021 Chirpanlytica | <a href="https://p3g3.de/chirpanalytica" target="_blank">Über dieses Projekt</a> <br> <a href="https://p3g3.de/datenschutz/" target="_blank">Datenschutz</a> und <a href="https://paul-goldschmidt.de/impressum/" target="_blank">Impressum</a></p>
+    </section>
+
+<!-- Matomo -->
+<script>
+	var _paq = window._paq = window._paq || [];
+	/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+	_paq.push(['trackPageView']);
+	_paq.push(['enableLinkTracking']);
+	(function() {
+	  var u="https://analytics.dotreflection.de/";
+	  _paq.push(['setTrackerUrl', u+'matomo.php']);
+	  _paq.push(['setSiteId', '4']);
+	  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	  g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+	})();
+  </script>
+  <!-- End Matomo Code -->
+
+<script>
+
+
+/////////////////////
+// REQUESTER LOGIC //
+/////////////////////
+
+var requesting = false;
+var bar = "<li><div data-percentage=\"_PER_\" class=\"bar\"></div><span>_NAM_</span></li>";
+var bar_prob = "_PER_";
+var bar_name = "_NAM_";
+var colors = ['009DE0', '46962b', 'FFFFFF', 'DF0404', 'FFED00', 'FF8800', 'E3000F'];
+$("#requester").submit(function (event)
+{
+	event.preventDefault();
+	account = $("#requester-name").val().replace(/\s/g, "").replace("@", ""); //Remove all whitespaces
+	console.log("submitted " + account);
+	if (account == "") {
+		console.log("Error: Empty namefield");
+	return;
+	if (requesting) return; requesting = true;
+	/*if (!twitterNameExists(account)) {
+	    // meldung, dass name nicht existiert
+	    requesting = false;
+	    return;
+	}*/
+	
+	$("#internal-error:not(.gone)").addClass("gone");
+	$("#loading.gone").removeClass("gone");
+	var calling = "https://ca.p3g3.de:2096/predict?user=" + account;
+	console.log(calling);
+
+	_paq.push(['trackEvent', 'Predict', 'Account', account]); //Matomo Tracking script
+	$.ajax({
+		url: calling,
+		context: document.body
+	}).done(function(values) {
+		$("#loading:not(.gone)").addClass("gone");
+		if (values["success"] == false)
+		{
+			$('#requester-name').effect("highlight", {"color": "#f99"}, 1500);
+			requesting = false;
+		}
+		else
+		{
+			$("#chart.gone").removeClass("gone");
+			values = values["data"]
+			console.log(values);
+
+			$("#bars").html("");
+			for (key in values)
+			{
+				newBar = bar.replace(bar_name, key.replace(new RegExp("B.*90.*", "gm"), "B/90");
+				newBar = newBar.replace("Alternative für Deutschland", "AfD");
+				newBar = newBar.replace("Christlich Demokratische Union Deutschlands", "CDU");
+				newBar = newBar.replace("Freie Demokratische Partei", "FDP");
+				newBar = newBar.replace("Piratenpartei Deutschland", "Piraten-<br>partei");
+				newBar = newBar.replace("Sozialdemokratische Partei Deutschlands", "SPD");
+				newBar = newBar.replace(bar_prob, Math.round(values[key] * 100));
+				$("#bars").html($("#bars").html() + newBar);
+			}
+			$(function() {
+			  $("#bars li .bar").each( function( key, bar ) {
+				bar.style.background = '#' + colors[key];
+				var percentage = $(this).data('percentage');
+				$(this).css("height","0px");
+				$(this).animate({
+				  height : percentage + '%'
+				}, 1000);
+			  });
+
+			requesting = false;
+			});
+		}
+	}).fail(function(values) {
+		$("#internal-error.gone").removeClass("gone");
+		$("#loading:not(.gone)").addClass("gone");
+		requesting = false;
+	});
+});
+
+// smooth scroll
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>
