@@ -1,4 +1,4 @@
-# Chirpanalytica
+# Chirpanalytica 🐦
 ## Analyzing your chirping to show your political footsteps on Twitter.
 Welcome to the repository of chirpanalytica, a project regarding AI and your digital footprints left on twitter.
 ### Navigating this repository
