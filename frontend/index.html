@@ -33,8 +33,8 @@
 				<input type="submit"></input>
 				<div id="loading" class="gone"></div>
 			</form>
-			<p style="margin-top:10px;margin-bottom:10px;">(Achtung: Es werden nur Accounts mit deutschsprachigen Tweets korrekt analysiert.)</p>
-			<p id="internal-error" class="gone">Leider ist ein interner Severfehler aufgetreten :(</p>
+			<p style="margin-top:10px;margin-bottom:10px;">Achtung: Es werden nur Accounts mit deutschsprachigen Tweets korrekt analysiert.</p>
+			<p id="internal-error" class="gone"><i>Leider ist ein interner Severfehler aufgetreten :(</i>i></p>
 		</div>
 
 		<div id="chart" class="gone">
@@ -74,14 +74,14 @@
 	(function() {
 	  var u="https://analytics.dotreflection.de/";
 	  _paq.push(['setTrackerUrl', u+'matomo.php']);
-	  _paq.push(['setSiteId', '4']);
+	  _paq.push(['setSiteId', '5']);
 	  var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
 	  g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
 	})();
   </script>
   <!-- End Matomo Code -->
-
-<script>
+  
+  <script>
 
 
 /////////////////////
@@ -110,10 +110,10 @@ $("#requester").submit(function (event)
 	
 	$("#internal-error:not(.gone)").addClass("gone");
 	$("#loading.gone").removeClass("gone");
-	var calling = "https://ca.p3g3.de:2096/predict?user=" + account;
+	var calling = "https://de.chirpanalytica.com:2096/predict?user=" + account;
 	console.log(calling);
 
-	_paq.push(['trackEvent', 'Predict', 'Account', account]); //Matomo Tracking script
+	_paq.push(['trackEvent', 'Predict', 'Account', account]); //Matomo Tracking
 	$.ajax({
 		url: calling,
 		context: document.body
@@ -129,7 +129,6 @@ $("#requester").submit(function (event)
 			$("#chart.gone").removeClass("gone");
 			values = values["data"]
 			console.log(values);
-
 			$("#bars").html("");
 			for (key in values)
 			{
