@@ -82,7 +82,6 @@ with open('data/usernames.csv', 'rt') as f:
                         if tweettime < past:
                             print("Tweets from now on to old.")
                             break
-                        print(status.full_text)
                         newtweettext = status.full_text
                         newtweettext = clean_text(str(newtweettext))
                         tweetlengh = str(newtweettext).count('')
