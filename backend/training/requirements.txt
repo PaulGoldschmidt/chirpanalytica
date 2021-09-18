@@ -6,4 +6,4 @@ datetime
 statistics
 flask
 nltk
-scikit
+scikit-learn
