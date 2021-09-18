@@ -42,7 +42,7 @@ def predict_party(twitter_handle):
             if tweettime > past:
                 newtweettext = clean_text(str(status.full_text))
                 tweetlengh = str(newtweettext).count('')
-                if tweetlengh > 4: #tweet should be longer than 4 characters
+                if tweetlengh < 4: #tweet should be longer than 4 characters
                     tweets.append(newtweettext)
                 else:
                     toshort = toshort + 1

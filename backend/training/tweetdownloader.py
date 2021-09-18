@@ -86,7 +86,7 @@ with open('data/usernames.csv', 'rt') as f:
                         newtweettext = status.full_text
                         newtweettext = clean_text(str(newtweettext))
                         tweetlengh = str(newtweettext).count('')
-                        if tweetlengh > 4: #tweet should be longer than 4 characters
+                        if tweetlengh < 4: #tweet should be longer than 4 characters
                             continue
                         writer.writerow([username, party, tweet.id_str, tweet.created_at, newtweettext])
                         count_tweets = count_tweets + 1
