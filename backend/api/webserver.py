@@ -12,7 +12,7 @@ def predict():
     r.headers.set('Access-Control-Allow-Origin', '*')
     return r
 
-app.route('/progress') #testing progress bar
+@app.route('/progress') #testing progress bar
 def progress():
 	def generate():
 		x = 0
