@@ -83,10 +83,7 @@
   
   <script>
 
-
-/////////////////////
-// REQUESTER LOGIC //
-/////////////////////
+//Request into backend and drawing/processing of data
 
 var requesting = false;
 var bar = "<li><div data-percentage=\"_PER_\" class=\"bar\"></div><span>_NAM_</span></li>";
@@ -100,7 +97,8 @@ $("#requester").submit(function (event)
 	console.log("submitted " + account);
 	if (account == "") {
 		console.log("Error: Empty namefield");
-	return;
+		return;
+	}
 	if (requesting) return; requesting = true;
 	/*if (!twitterNameExists(account)) {
 	    // meldung, dass name nicht existiert
@@ -132,7 +130,7 @@ $("#requester").submit(function (event)
 			$("#bars").html("");
 			for (key in values)
 			{
-				newBar = bar.replace(bar_name, key.replace(new RegExp("B.*90.*", "gm"), "B/90");
+				newBar = bar.replace(bar_name, key.replace(new RegExp("B.*90.*", "gm"), "B/90"));
 				newBar = newBar.replace("Alternative für Deutschland", "AfD");
 				newBar = newBar.replace("Christlich Demokratische Union Deutschlands", "CDU");
 				newBar = newBar.replace("Freie Demokratische Partei", "FDP");
