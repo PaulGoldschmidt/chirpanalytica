@@ -1,9 +1,5 @@
-###### Requirements without specific version required ######
-tweepy
-pathlib
-numpy
-datetime
-statistics
-flask
-nltk
-scikit-learn
+matplotlib==3.4.3
+nltk==3.6.3
+numpy==1.21.2
+scikit-learn==0.24.2
+tweepy==3.10.0
