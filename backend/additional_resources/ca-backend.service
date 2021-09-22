@@ -4,7 +4,7 @@ Description=The Chirpanalytica forecast backend
 [Service]
 Type=simple
 WorkingDirectory=/srv/chirpanalytica/de/api
-ExecStart=/srv/chirpanalytica/de/backend/webserver.py
+ExecStart=/srv/chirpanalytica/de/webserver.py
 TimeoutSec=0
 StandardOutput=journal
 RemainAfterExit=no
