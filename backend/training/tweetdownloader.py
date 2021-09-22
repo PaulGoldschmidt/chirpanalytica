@@ -1,14 +1,13 @@
 # Downloadscript for chirpanalytica (ca)
+from cleanuptext import clean_text
 import tweepy
 import time
 import csv
 import sys
 import json
-import re  # re: für die wegkürzung der URLs aus den Tweets
 from datetime import datetime
 from datetime import timedelta
 sys.path.append('../')
-from cleanuptext import clean_text
 
 print("Starting downloading tweets. Standby...")
 
@@ -22,7 +21,7 @@ count_success = 0
 count_fail = 0
 count_tweets = 0
 
-#Import twitter credentials from file
+# Import twitter credentials from file
 with open('../twittercredentials.json') as data_file:
     data = json.load(data_file)
 
@@ -77,7 +76,8 @@ with open('data/usernames.csv', 'rt') as f:
                     for tweet in tweepy.Cursor(api.user_timeline, screen_name=username).items(number_of_tweets):
                         # create array of tweet information: username, tweet id, date/time, text
                         tweettime = tweet.created_at
-                        status = api.get_status(tweet.id_str, tweet_mode="extended")
+                        status = api.get_status(
+                            tweet.id_str, tweet_mode="extended")
                         # check, ob kriterien für tweetspeicherung erfüllt sind.
                         if tweettime < past:
                             print("Tweets from now on to old.")
@@ -85,12 +85,13 @@ with open('data/usernames.csv', 'rt') as f:
                         newtweettext = status.full_text
                         newtweettext = clean_text(str(newtweettext))
                         tweetlengh = str(newtweettext).count('')
-                        if tweetlengh < 4: #tweet should be longer than 4 characters
+                        if tweetlengh < 4:  # tweet should be longer than 4 characters
                             continue
-                        writer.writerow([username, party, tweet.id_str, tweet.created_at, newtweettext])
+                        writer.writerow(
+                            [username, party, tweet.id_str, tweet.created_at, newtweettext])
                         count_tweets = count_tweets + 1
                         print("Downloaded tweet number " +
-                                str(count_tweets) + ".")
+                              str(count_tweets) + ".")
                     count_success += 1
                     print("Done downloading account, going to the next account")
             except Exception as err:

@@ -12,8 +12,8 @@ nltk.download('stopwords')
 stemmer = SnowballStemmer("german")
 stop_words = set(stopwords.words("german"))
 
-def clean_text(text, for_embedding=False):
 
+def clean_text(text, for_embedding=False):
     """
         - remove any html tags (< /br> often found)
         - Keep only ASCII + European Chars and whitespace, no digits
@@ -23,8 +23,9 @@ def clean_text(text, for_embedding=False):
         - all lowercase
         - remove stopwords, punctuation and stemm
     """
-    text = re.sub(r'http\S+', '', text) # for twitter: cutout everything url-related
-    #text = re.sub(r'^.*?b', '', text) #remove everything until leading "'"
+    text = re.sub(r'http\S+', '',
+                  text)  # for twitter: cutout everything url-related
+    # text = re.sub(r'^.*?b', '', text) #remove everything until leading "'"
     RE_WSPACE = re.compile(r"\s+", re.IGNORECASE)
     RE_TAGS = re.compile(r"<[^>]+>")
     RE_ASCII = re.compile(r"[^A-Za-zÀ-ž ]", re.IGNORECASE)
@@ -38,7 +39,7 @@ def clean_text(text, for_embedding=False):
     text = re.sub(RE_ASCII, " ", text)
     text = re.sub(RE_SINGLECHAR, " ", text)
     text = re.sub(RE_WSPACE, " ", text)
-    
+
     word_tokens = word_tokenize(text)
     words_tokens_lower = [word.lower() for word in word_tokens]
 
@@ -53,6 +54,7 @@ def clean_text(text, for_embedding=False):
     text_clean = " ".join(words_filtered)
     return text_clean
 
-if __name__ == '__main__': # Only executes when called manualy 
+
+if __name__ == '__main__':  # Only executes when called manualy
     result = clean_text(sys.argv[1].decode('utf-8'))
     print(result)

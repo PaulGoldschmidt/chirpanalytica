@@ -117,3 +117,4 @@ dmypy.json
 backend/twittercredentials.json
 backend/training/export/*
 backend/training/data/*
+backend/training/logs/*

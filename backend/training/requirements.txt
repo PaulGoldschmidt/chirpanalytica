@@ -1,4 +1,4 @@
-###### Requirements without specific version required ######`
+###### Requirements without specific version required ######
 tweepy
 pathlib
 numpy
