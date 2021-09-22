@@ -8,3 +8,4 @@ ExecStart=/srv/chirpanalytica/de/backend/webserver.py
 TimeoutSec=0
 StandardOutput=journal
 RemainAfterExit=no
+Restart=on-abort
