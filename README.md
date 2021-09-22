@@ -4,7 +4,7 @@ Welcome to the repository of chirpanalytica, a project regarding AI and your dig
 ### Navigating this repository
 There are some really important files to getting started and seeing what (and who, so to speak) lays behind the project.
 
-[Credits of this project](credits.md)
+[Credits of this project](CREDITS.md)
 
 [Installation Guide](installation.md)
 

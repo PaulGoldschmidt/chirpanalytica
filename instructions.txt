@@ -1,4 +1,4 @@
-#Chirpanalytica, a project by Torben Wetter and Paul Goldschmidt (see credits.md for additonal copyright)
+#Chirpanalytica, a project by Torben Wetter and Paul Goldschmidt (see CREDITS.md for additonal copyright)
 ##Installation instructions
 
 Tested for Python 3.8.5 (64-bit)
