@@ -1,4 +1,3 @@
-from cleanuptext import clean_text
 import tweepy
 import sys
 import predict
@@ -6,7 +5,8 @@ import statistics
 import json
 from datetime import datetime
 from datetime import timedelta
-sys.path.append('../')
+sys.path.append('../') # Now the cleanuptext-file from the folder above can be imported
+from cleanuptext import clean_text
 
 # Import Twitter credentials from file
 with open('../twittercredentials.json') as data_file:
