@@ -1,9 +1,9 @@
 #! /usr/bin/env python3
 from flask import Flask, request, jsonify, make_response
 from predict_account import predict_party
+from waitress import serve # Production-ready webserver
 
 app = Flask(__name__)
-
 
 @app.route('/predict')
 def predict():
@@ -16,4 +16,4 @@ def predict():
 
 if __name__ == '__main__':
     # Running locally behind reverse proxy
-    app.run(host="127.0.0.1", port=8879)
+    serve(app, host='127.0.0.1', port=8879)
