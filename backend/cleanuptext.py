@@ -1,4 +1,4 @@
-# Cleanup text for better neural language processin for chripanalytica (USE ONLY FOR GERMAN MODELS)
+# Cleanup text for better neural language processing for Chirpanalytica (USE ONLY FOR GERMAN MODELS)
 import sys
 import re
 import nltk
@@ -16,16 +16,15 @@ stop_words = set(stopwords.words("german"))
 def clean_text(text, for_embedding=False):
     """
         - remove any html tags (< /br> often found)
-        - Keep only ASCII + European Chars and whitespace, no digits
+        - keep only ASCII + European Chars and whitespace, no digits
         - remove single letter chars
         - convert all whitespaces (tabs etc.) to single wspace
         if not for embedding (but e.g. tdf-idf):
         - all lowercase
         - remove stopwords, punctuation and stemm
     """
-    text = re.sub(r'http\S+', '',
-                  text)  # for twitter: cutout everything url-related
-    # text = re.sub(r'^.*?b', '', text) #remove everything until leading "'"
+    # For Twitter: cut out everything url-related
+    text = re.sub(r'http\S+', '', text)
     RE_WSPACE = re.compile(r"\s+", re.IGNORECASE)
     RE_TAGS = re.compile(r"<[^>]+>")
     RE_ASCII = re.compile(r"[^A-Za-zÀ-ž ]", re.IGNORECASE)
@@ -44,7 +43,7 @@ def clean_text(text, for_embedding=False):
     words_tokens_lower = [word.lower() for word in word_tokens]
 
     if for_embedding:
-        # no stemming, lowering and punctuation / stop words removal
+        # No stemming, lowering and punctuation / stop words removal
         words_filtered = word_tokens
     else:
         words_filtered = [
@@ -55,6 +54,7 @@ def clean_text(text, for_embedding=False):
     return text_clean
 
 
-if __name__ == '__main__':  # Only executes when called manualy
+# Only executed when called manually
+if __name__ == '__main__':
     result = clean_text(sys.argv[1].decode('utf-8'))
     print(result)

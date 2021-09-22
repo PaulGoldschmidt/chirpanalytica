@@ -24,19 +24,21 @@ with open("../training/export/export_fractions.dat", "rb") as handle:
 
 
 def predict(tweet):
-    # Predict
+    # Predict: vectorize
     features = tf_transformer.transform(
-        count.transform({tweet})).toarray()  # vectorize
+        count.transform({tweet})).toarray()
     prediction = clf.predict_proba(features)
     results = {}
 
     for key, value in fractions.items():
-        for i in range(0, len(clf.classes_) - 1 + 1):  # range is exclusive upper bound
+        # Python's range is specified with exclusive upper bound
+        for i in range(0, len(clf.classes_) - 1 + 1):
             if clf.classes_[i] == value:
                 results[key] = prediction[0][i]
     return results
 
 
+# Only executed when called manually
 if __name__ == '__main__':
     if (len(sys.argv) != 2):
         print('Illegal arguments!')

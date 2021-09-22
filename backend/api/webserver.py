@@ -15,5 +15,5 @@ def predict():
 
 
 if __name__ == '__main__':
-    # running locally behind reverse proxy
+    # Running locally behind reverse proxy
     app.run(host="127.0.0.1", port=8879)

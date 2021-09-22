@@ -1,4 +1,4 @@
-# Downloadscript for chirpanalytica (ca)
+# Download script for Chirpanalytica (ca)
 from cleanuptext import clean_text
 import tweepy
 import time
@@ -12,16 +12,16 @@ sys.path.append('../')
 print("Starting downloading tweets. Standby...")
 
 now = datetime.now()
-print("Starttime:")
+print("Start time:")
 print(now.strftime("%Y-%m-%d %H:%M:%S"))
 starttime = time.perf_counter()
 
-# Counter für Statistiken
+# Counters for statistics
 count_success = 0
 count_fail = 0
 count_tweets = 0
 
-# Import twitter credentials from file
+# Import Twitter credentials from file
 with open('../twittercredentials.json') as data_file:
     data = json.load(data_file)
 
@@ -30,14 +30,14 @@ consumer_secret = data['consumerSecret']
 access_key = data['accessTokenKey']
 access_secret = data['accessTokenSecret']
 
-# Outputdatei
+# Output file
 outfile = "data/tweets.csv"
 
 with open('data/usernames.csv', 'rt') as f:
     # Skip header line
     next(f)
 
-    print("Read CSV with users.")
+    print("Reading CSV with users.")
 
     rows = list(csv.reader(f))
     party_mapping = {}
@@ -61,31 +61,32 @@ with open('data/usernames.csv', 'rt') as f:
                              wait_on_rate_limit_notify=True)
             try:
                 u = api.get_user(username)
-                print("Downloading tweets from " + username + " with the User-ID " + u.id_str +
+                print("Downloading Tweets from " + username + " with the User-ID " + u.id_str +
                       " from the party " + party + " and the display name " + u.screen_name + ".")
 
-                # so viele Tweets werden maximal heruntergeladen
+                # Nnumber of Tweets being downloaded simultaneously
                 number_of_tweets = 250
 
-                # Aktuelles Datum mit timedelta subtrahieren, dann in past speichern
+                # Start 60 days in the past
                 past = datetime.today() - timedelta(days=60)
 
-                # get tweets
+                # Retrieve Tweets
                 with open(outfile, 'a') as file:
                     writer = csv.writer(file, delimiter=',')
                     for tweet in tweepy.Cursor(api.user_timeline, screen_name=username).items(number_of_tweets):
-                        # create array of tweet information: username, tweet id, date/time, text
+                        # Create array of Tweet information: username, tweet id, date/time, text
                         tweettime = tweet.created_at
                         status = api.get_status(
                             tweet.id_str, tweet_mode="extended")
-                        # check, ob kriterien für tweetspeicherung erfüllt sind.
+                        # Check whether the criteria for analyzing tweets are met
                         if tweettime < past:
                             print("Tweets from now on to old.")
                             break
                         newtweettext = status.full_text
                         newtweettext = clean_text(str(newtweettext))
                         tweetlengh = str(newtweettext).count('')
-                        if tweetlengh < 4:  # tweet should be longer than 4 characters
+                        # Ensure that the Tweet is longer than 4 characters
+                        if tweetlengh < 4:
                             continue
                         writer.writerow(
                             [username, party, tweet.id_str, tweet.created_at, newtweettext])

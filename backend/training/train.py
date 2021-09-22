@@ -17,56 +17,58 @@ from datetime import datetime
 import numpy as np
 import time
 import random
-from pathlib import Path  # pathlib makes it easier to work with paths
-import csv  # Import CSV for reading the tweets
+from pathlib import Path
+# Import CSV for reading the tweets
+import csv
 DATA_SIZE = 200000
 L2_PENALTY = 1e-3
 LEARNING_RATE_INIT = 1e-3
 ITERATIONS = 500
 LAYER = (1000, 500, 500)
-SOLVER = "adam"  # adam and lbfgs are recommended
+# Recommended solvers are "adam" and "lbfgs"
+SOLVER = "adam"
 TEST_SIZE = 1/3
 
-
-# Import all the needed Libs
 
 print("Begin training of neural network for Chirpanalytica. Time of execution: ", end='')
 now = datetime.now()
 print(now.strftime("%Y-%m-%d %H:%M:%S"))
-starttime = time.perf_counter()  # Save time for execution time stats
+# Save start time for execution time stats
+starttime = time.perf_counter()
 
-# read the CSV and create object with tweets
-tweets = []  # here are the tweets stored
-fractions = []  # and here the fractions
+# Read the CSV and create an array for Tweets
+tweets = []
+fractions = []
 
-data_folder = Path("data/")  # this is the location of the data for training
+# Location of the training data
+data_folder = Path("data/")
 
 tweetpath = data_folder / "tweets.csv"
 
 with open(tweetpath, newline='') as data:
     csv_reader = csv.reader(data, delimiter=',')
-    line_count = 0  # variable to store the iteration of read lines
+    line_count = 0
     for row in csv_reader:
         fractions.append(row[1])
         tweets.append(row[4])
         line_count += 1
         print("Just read the following tweet: " + row[4])
-    print("Read in total " + str(line_count) + " Lines of CSV. " +
+    print("Read in total " + str(line_count) + " lines of CSV. " +
           str(len(tweets)) + " Tweets have been loaded into the system.")
 
 
-# shuffle data
+# Shuffle the data
 shuffler = list(zip(fractions, tweets))
 random.shuffle(shuffler)
 fractions, tweets = zip(*shuffler)
 
-# pick first DATA_SIZE tweets
+# Pick first DATA_SIZE Tweets
 DATA_SIZE = min(DATA_SIZE, len(fractions))
 fractions = fractions[0:DATA_SIZE]
 tweets = tweets[0:DATA_SIZE]
 
 data_raw = np.asarray(tweets)
-print(str(len(data_raw)) + " tweets loaded!")
+print(str(len(data_raw)) + " Tweets loaded!")
 
 
 # Create Bag-Of-Words
@@ -87,15 +89,19 @@ print("OK, final data shape: " + str(data_tf.shape))
 # Convert fractions from str to int
 ###
 labels = []
-fractionset = set(fractions)  # get unique fractions
-fractionsdict = dict()  # prepare dictionary
+# Get unique fractions
+fractionset = set(fractions)
+# Prepare fractions dictionary
+fractionsdict = dict()
+# Iterate over unique entries
 i = 0
-for fraction in fractionset:  # iterate over unique entrys
-    fractionsdict.update({fraction: i})  # insert new dict entry str -> int
+for fraction in fractionset:
+    # Insert new dict entry (str -> int)
+    fractionsdict.update({fraction: i})
     i += 1
 
 for fraction in fractions:
-    # change entry in original dataset to int classes
+    # Change entry in original dataset to int classes
     labels.append(fractionsdict[fraction])
 
 print("Data ready for training.")
@@ -199,7 +205,7 @@ print("Training error: " + str(e_train),
 print("Test error: " + str(e_test))
 print("Test error: " + str(e_test), file=open("export/evaluation.txt", "a"))
 
-# Advanced performance analzsis
+# Advanced performance analysis
 print("\nTraining data:")
 print("\nTraining data:", file=open("export/evaluation.txt", "a"))
 print(metrics.classification_report(
@@ -213,6 +219,7 @@ print(metrics.classification_report(
 print(metrics.classification_report(y_test, p_test, target_names=list(
     fractionset)), file=open("export/evaluation.txt", "a"))
 print()
+
 # Compute confusion matrix
 cnf_matrix = confusion_matrix(y_test, p_test)
 np.set_printoptions(precision=2)

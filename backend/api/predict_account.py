@@ -8,7 +8,7 @@ from datetime import datetime
 from datetime import timedelta
 sys.path.append('../')
 
-# Import twitter credentials from file
+# Import Twitter credentials from file
 with open('../twittercredentials.json') as data_file:
     data = json.load(data_file)
 
@@ -23,26 +23,27 @@ def predict_party(twitter_handle):
     auth.set_access_token(access_key, access_secret)
     api = tweepy.API(auth, wait_on_rate_limit=True,
                      wait_on_rate_limit_notify=True)
-    # so viele Tweets werden maximal heruntergeladen
+    # Limit number of Tweets being downloaded simultaneously
     number_of_tweets = 100
     toshort = 0
     tweetsread = 0
 
-    # Aktuelles Datum mit timedelta subtrahieren, dann in past speichern
+    # Start 60 days in the past
     past = datetime.today() - timedelta(days=60)
     predictions = {}
     tweets = []
     print("Serving request of downloading user \"" + str(twitter_handle) + "\"")
     try:
         for tweet in tweepy.Cursor(api.user_timeline, screen_name=twitter_handle).items(number_of_tweets):
-            # create array of tweet information: username, tweet id, date/time, text
+            # Create array of Tweet information: username, tweet id, date/time, text
             tweettime = tweet.created_at
             status = api.get_status(tweet.id_str, tweet_mode="extended")
-            # check, if criteria is met for analyzement of tweets
+            # Check whether the criteria for analyzing tweets are met
             if tweettime > past:
                 newtweettext = clean_text(str(status.full_text))
                 tweetlengh = str(newtweettext).count('')
-                if tweetlengh > 4:  # tweet should be longer than 4 characters
+                # Ensure that the Tweet is longer than 4 characters
+                if tweetlengh > 4:
                     tweets.append(newtweettext)
                 else:
                     toshort = toshort + 1
@@ -62,16 +63,17 @@ def predict_party(twitter_handle):
             predictions[key].append(value)
 
     for key, value in predictions.items():
-        # verbose output: print(key, value)
         predictions[key] = statistics.mean(value)
     print("Success. Downloaded and analyzed in total " +
           str(tweetsread) + " tweets. Exiting with return of results.")
     return dict({"success": True, "error": {}, "data": predictions, "tweetsread": tweetsread})
 
 
-if __name__ == '__main__':  # Only executes when called manualy
+# Only executed when called manually
+if __name__ == '__main__':
     result = predict_party(sys.argv[1])
     if (result["success"] == True):
         print(json.dumps(result))
         exit(0)
-    print(json.dumps(result["error"]))  # print error
+    # Print error
+    print(json.dumps(result["error"]))
