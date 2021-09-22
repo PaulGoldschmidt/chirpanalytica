@@ -1,5 +1,4 @@
 # Download script for Chirpanalytica (ca)
-from cleanuptext import clean_text
 import tweepy
 import time
 import csv
@@ -8,6 +7,7 @@ import json
 from datetime import datetime
 from datetime import timedelta
 sys.path.append('../')
+from cleanuptext import clean_text
 
 print("Starting downloading tweets. Standby...")
 
