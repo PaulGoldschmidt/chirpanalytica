@@ -1,0 +1,10 @@
+[Unit]
+Description=The Chirpanalytica forecast backend
+
+[Service]
+Type=simple
+WorkingDirectory=/srv/chirpanalytica/de/api
+ExecStart=/srv/chirpanalytica/de/backend/webserver.py
+TimeoutSec=0
+StandardOutput=journal
+RemainAfterExit=no
