@@ -5,7 +5,8 @@
   margin: 20px auto;
   background: rgba(0, 0, 0, 0.25);
   border-radius: 3px;
-  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3),
+    0 1px rgba(255, 255, 255, 0.1);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
 }
 
@@ -21,6 +22,7 @@
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
   cursor: pointer;
 }
+
 .switch-label:active {
   font-weight: bold;
 }
@@ -33,10 +35,10 @@
   padding-right: 2px;
 }
 
-
 .switch-input {
   display: none;
 }
+
 .switch-input:checked + .switch-label {
   font-weight: bold;
   color: rgba(0, 0, 0, 0.65);
@@ -52,6 +54,7 @@
   -o-transition-property: color, text-shadow;
   transition-property: color, text-shadow;
 }
+
 .switch-input:checked + .switch-label-on ~ .switch-selection {
   left: 60px;
   /* Note: left: 50%; doesn't transition in WebKit */
@@ -67,13 +70,20 @@
   height: 22px;
   border-radius: 3px;
   background-color: #65bd63;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9dd993), color-stop(100%, #65bd63));
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #9dd993),
+    color-stop(100%, #65bd63)
+  );
   background-image: -webkit-linear-gradient(top, #9dd993, #65bd63);
   background-image: -moz-linear-gradient(top, #9dd993, #65bd63);
   background-image: -ms-linear-gradient(top, #9dd993, #65bd63);
   background-image: -o-linear-gradient(top, #9dd993, #65bd63);
   background-image: linear-gradient(top, #9dd993, #65bd63);
-  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), 0 0 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.5),
+    0 0 2px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.5), 0 0 2px rgba(0, 0, 0, 0.2);
   -webkit-transition: left 0.15s ease-out;
   -moz-transition: left 0.15s ease-out;
@@ -83,7 +93,13 @@
 }
 .switch-blue .switch-selection {
   background-color: #3aa2d0;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #4fc9ee), color-stop(100%, #3aa2d0));
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #4fc9ee),
+    color-stop(100%, #3aa2d0)
+  );
   background-image: -webkit-linear-gradient(top, #4fc9ee, #3aa2d0);
   background-image: -moz-linear-gradient(top, #4fc9ee, #3aa2d0);
   background-image: -ms-linear-gradient(top, #4fc9ee, #3aa2d0);
@@ -92,12 +108,16 @@
 }
 .switch-yellow .switch-selection {
   background-color: #c4bb61;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e0dd94), color-stop(100%, #c4bb61));
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0%, #e0dd94),
+    color-stop(100%, #c4bb61)
+  );
   background-image: -webkit-linear-gradient(top, #e0dd94, #c4bb61);
   background-image: -moz-linear-gradient(top, #e0dd94, #c4bb61);
   background-image: -ms-linear-gradient(top, #e0dd94, #c4bb61);
   background-image: -o-linear-gradient(top, #e0dd94, #c4bb61);
   background-image: linear-gradient(top, #e0dd94, #c4bb61);
 }
-
-
