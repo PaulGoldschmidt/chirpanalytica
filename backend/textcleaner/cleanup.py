@@ -13,7 +13,7 @@ stemmer = SnowballStemmer("german")
 stop_words = set(stopwords.words("german"))
 
 
-def clean_text(text, for_embedding=False):
+def cleanup(text, for_embedding=False):
     """
         - remove any html tags (< /br> often found)
         - keep only ASCII + European Chars and whitespace, no digits
@@ -52,9 +52,3 @@ def clean_text(text, for_embedding=False):
 
     text_clean = " ".join(words_filtered)
     return text_clean
-
-
-# Only executed when called manually
-if __name__ == '__main__':
-    result = clean_text(sys.argv[1].decode('utf-8'))
-    print(result)

@@ -5,8 +5,9 @@ import statistics
 import json
 from datetime import datetime
 from datetime import timedelta
-sys.path.append('../') # Now the cleanuptext-file from the folder above can be imported
-from cleanuptext import clean_text
+sys.path.append("..")
+from textcleaner import cleanup
+sys.path.pop()
 
 # Import Twitter credentials from file
 with open('../twittercredentials.json') as data_file:
@@ -40,7 +41,7 @@ def predict_party(twitter_handle):
             status = api.get_status(tweet.id_str, tweet_mode="extended")
             # Check whether the criteria for analyzing tweets are met
             if tweettime > past:
-                newtweettext = clean_text(str(status.full_text))
+                newtweettext = cleanup(str(status.full_text))
                 tweetlengh = str(newtweettext).count('')
                 # Ensure that the Tweet is longer than 4 characters
                 if tweetlengh > 4:

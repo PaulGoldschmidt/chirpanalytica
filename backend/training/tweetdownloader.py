@@ -6,8 +6,9 @@ import sys
 import json
 from datetime import datetime
 from datetime import timedelta
-sys.path.append('../')
-from cleanuptext import clean_text
+sys.path.append("..")
+from textcleaner import cleanup
+sys.path.pop()
 
 print("Starting downloading tweets. Standby...")
 
@@ -83,7 +84,7 @@ with open('data/usernames.csv', 'rt') as f:
                             print("Tweets from now on to old.")
                             break
                         newtweettext = status.full_text
-                        newtweettext = clean_text(str(newtweettext))
+                        newtweettext = cleanup(str(newtweettext))
                         tweetlengh = str(newtweettext).count('')
                         # Ensure that the Tweet is longer than 4 characters
                         if tweetlengh < 4:
