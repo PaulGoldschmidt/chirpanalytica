@@ -24,8 +24,8 @@ def predict_party(twitter_handle):
     auth.set_access_token(access_key, access_secret)
     api = tweepy.API(auth, wait_on_rate_limit=True,
                      wait_on_rate_limit_notify=True)
-    # Limit number of Tweets being downloaded simultaneously
-    number_of_tweets = 100
+    # Limit number of Tweets being downloaded to analyze
+    number_of_tweets = 50
     toshort = 0
     tweetsread = 0
 
