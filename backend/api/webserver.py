@@ -5,7 +5,7 @@ from waitress import serve # Production-ready webserver
 
 app = Flask(__name__)
 
-@app.route('/predict')
+@app.route('/de/predictuser')
 def predict():
     twitter_handle = request.args.get('user')
     # Raw output (including error, success and data field)
