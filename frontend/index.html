@@ -139,7 +139,7 @@
 
 			$("#internal-error:not(.gone)").addClass("gone");
 			$("#loadingresults.gone").removeClass("gone");
-			var calling = "https://de.chirpanalytica.com:2096/predict?user=" + account;
+			var calling = "https://api.chirpanalytica.com/de/predictuser?handle=" + account;
 			console.log(calling);
 
 			_paq.push(['trackEvent', 'Predict', 'Account', account]); //Matomo Tracking

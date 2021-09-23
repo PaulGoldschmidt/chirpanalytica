@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/de/predictuser')
 def predict():
-    twitter_handle = request.args.get('user')
+    twitter_handle = request.args.get('handle')
     # Raw output (including error, success and data field)
     r = make_response(jsonify(predict_party(twitter_handle)))
     r.headers.set('Access-Control-Allow-Origin', '*')
