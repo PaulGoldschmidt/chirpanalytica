@@ -66,9 +66,7 @@ a:hover {
 }
 
 .sec1 {
-  height: 70vh;
-  padding-right: 50px;
-  padding-left: 50px;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,6 +76,12 @@ a:hover {
 
 .sec1 > h1 {
   font-size: 300%;
+}
+
+.addp {
+  height: 40vh;
+  margin: auto;
+  width: 50%;
 }
 
 .sec2 {
