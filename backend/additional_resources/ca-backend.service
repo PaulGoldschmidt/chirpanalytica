@@ -9,3 +9,6 @@ TimeoutSec=0
 StandardOutput=journal
 RemainAfterExit=no
 Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
