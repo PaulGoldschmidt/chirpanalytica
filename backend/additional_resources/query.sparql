@@ -1,0 +1,10 @@
+# Wikidata query for Chirpanalytica // Written 2020/21 by Paul Goldschmidt and Torben Wetter. See LICENCE for licencing information.
+SELECT DISTINCT ?item ?itemLabel ?twitter ?party ?partyLabel WHERE {
+  ?item wdt:P31 wd:Q5;
+    wdt:P102 ?party;
+    wdt:P2002 ?twitter.
+  ?party wdt:P31 wd:Q2023214.
+  FILTER(NOT EXISTS { ?party wdt:P576 ?end. })
+  FILTER(NOT EXISTS { ?twitter pq:P582 ?twitterEnd. })
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "de,[AUTO_LANGUAGE]". }
+}

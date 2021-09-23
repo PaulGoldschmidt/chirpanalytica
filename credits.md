@@ -9,6 +9,7 @@ Chirpanalytica originates from the Jugend hackt project "Profile-O-Mat" which wa
 The data preprocessing function is based on a research project by [Michael](https://twitter.com/mc51_) ([Natural Language Processing of German texts](https://data-dive.com/german-nlp-binary-text-classification-of-reviews-part1)) but has been modified for usage with twitter-text.
 
 Thanks to [Torben Wetter](https://twitter.com/TorbenWetter) for his help during the rebuild of the project.
+Also, great thanks to [Martin](https://twitter.com/wikitable) for his help building the [wikidata-query](backend/additional_resources/query.sparql).
 
 This project wouldn't be possible without the help of hundreds and thousands of individuals keeping [Wikidata](https://www.wikidata.org/wiki/Wikidata:Main_Page) updated.
 

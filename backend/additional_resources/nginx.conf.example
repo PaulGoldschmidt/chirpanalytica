@@ -1,0 +1,45 @@
+# Chirpanalytica basic nginx-configuration // Paul G. (2021-16-09)
+
+server {
+        listen 443 ssl http2;
+        listen [::]:443 ssl http2;
+        ssl_certificate PATH_TO_SSL_KEYS;
+        ssl_certificate_key PATH_TO_SSL_KEYS;
+
+        # Include your path to a SSL configuration
+        include PATH_TO_SSL_CONFIG;
+        include PATH_TO_SSL_CONFIG;
+
+        server_name YOUR_FRONTEND_DOMAIN;
+        root /var/www/html/chirpanalytica.com/de/frontend;
+        index index.html;
+        rewrite ^(/.*)\.html(\?.*)?$ $1$2 permanent;
+        rewrite ^/(.*)/$ /$1 permanent;
+        try_files $uri/index.html $uri.html $uri/ $uri =404;
+}
+
+server {
+        listen 443 ssl http2;
+        listen [::]:443 ssl http2;
+        ssl_certificate PATH_TO_SSL_KEYS;
+        ssl_certificate_key PATH_TO_SSL_KEYS;
+
+        # Include your path to a SSL configuration
+        include PATH_TO_SSL_CONFIG;
+        include PATH_TO_SSL_CONFIG;
+
+        server_name YOUR_API_DOMAIN;
+        
+        gzip_proxied any;
+        gzip_types text/plain text/xml text/css application/x-javascript;
+        gzip_vary on;
+        gzip_disable “MSIE [1-6]\.(?!.*SV1)”;
+
+        location /de/ {
+            proxy_pass http://127.0.0.1:8879;
+            proxy_set_header Host $http_host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+}
