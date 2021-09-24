@@ -29,7 +29,6 @@
 }
 
 #chart #numbers li span {
-  color: #4caf50;
   position: absolute;
   bottom: 0;
   right: 10px;
@@ -71,7 +70,6 @@
 }
 
 #chart #bars li span {
-  color: #4caf50;
   width: 100%;
   position: absolute;
   bottom: -4em;
