@@ -29,12 +29,6 @@ a {
   color: #4caf50;
 }
 
-#requester-container {
-  height: 175px;
-  z-index: 1000;
-  transform: translate(0, -50%);
-}
-
 h1 {
   font-size: 42pt;
 }
@@ -84,23 +78,8 @@ a:hover {
   width: 50%;
 }
 
-.sec2 {
-  background-color: #f1f1f1;
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
 .sec3 {
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   text-align: center;
-}
-
-.sec3 > img {
-  margin-bottom: 10px;
 }
 
 input[type="text"] {

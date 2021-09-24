@@ -6,13 +6,11 @@ body {
 }
 
 #chart {
-  position: absolute;
   top: 100vh;
   width: 650px;
   height: 300px;
   margin: 30px auto 0;
   display: block;
-  transform: translate(0px, -330px);
 }
 
 #chart #numbers {
