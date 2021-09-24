@@ -3,6 +3,7 @@
 html,
 body {
   font-family: "Roboto", sans-serif;
+  font-size: 16px;
   background-color: #fff;
   color: #444;
   height: 100%;
@@ -32,7 +33,7 @@ a {
 }
 
 h1 {
-  font-size: 42pt;
+  font-size: 3rem;
 }
 
 .gone {
@@ -67,10 +68,6 @@ a:hover {
   text-align: center;
 }
 
-.sec1 > h1 {
-  font-size: 300%;
-}
-
 .sec3 {
   text-align: center;
 }
@@ -79,8 +76,6 @@ input[type="text"] {
   display: inline-block;
   border: none;
   outline: none;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
   background-color: #f1f1f1;
   padding: 10px;
   border-bottom: 1px solid #ccc;
@@ -94,8 +89,6 @@ input[type="submit"] {
   display: inline-block;
   border: none;
   outline: none;
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
   background-color: #4caf50;
   color: #fff;
   cursor: pointer;
