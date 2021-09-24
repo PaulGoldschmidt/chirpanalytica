@@ -1,6 +1,6 @@
 # Credits of Chirpanalytica
 
-Welcome to the credit section of the Chirpanalytica AI project.
+Welcome to the credit section of the [Chirpanalytica AI](https://chirpanalytica.com) project.
 
 ## Based on the [Jugend hackt](https://jugendhackt.org) project "Profile-O-Mat"
 
