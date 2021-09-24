@@ -16,6 +16,10 @@ There are some really important files to getting started and seeing what (and wh
 
 As we're still studends and don't have a lot of time to support custom integrations and non-priority or security-related issues, you are very welcome to take part in the further development of this project.
 
+### Linked projects
+
+There is a twitter-bot build for this chirpanalytica, for further informations about the bot take a look into the [GitHub-Repository](https://github.com/PaulGoldschmidt/chirpbot)
+
 ### License
 
 Please take a look at the [license](LICENSE) of this project
