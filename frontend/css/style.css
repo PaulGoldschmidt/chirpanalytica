@@ -5,6 +5,8 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #fff;
   color: #444;
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -34,10 +36,8 @@ h1 {
 }
 
 .gone {
-  width: 0px;
-  height: 0px;
+  display: none !important;
   overflow: hidden;
-  opacity: 0;
   pointer-events: none;
 }
 
@@ -60,7 +60,6 @@ a:hover {
 }
 
 .sec1 {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -2,102 +2,102 @@
 <html lang="de">
 
 <head>
-	<title>Chirpanalytica</title>
-	<meta charset="utf-8">
-	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:site" content="@chirpanalytica" />
-	<meta property="og:url" content="https://de.chirpanalytica.com/" />
-	<meta property="og:title" content="Chirpanalytica - der Wahl-O-Mat für Twitter-Accounts" />
-	<meta property="og:description"
-		content="Der Wahl-O-Mat braucht dir zu lange zum Ausfüllen? Gib deinen Twitter-Handle ein und wir finden heraus, welche Partei am besten zu dir passt!" />
-	<meta property="og:image" content="https://de.chirpanalytica.com/images/sqare.jpg" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" type="text/css" href="css/github-corner.css">
-	<link rel="stylesheet" type="text/css" href="css/predict.css">
+    <title>Chirpanalytica</title>
+    <meta charset="utf-8">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@chirpanalytica" />
+    <meta property="og:url" content="https://de.chirpanalytica.com/" />
+    <meta property="og:title" content="Chirpanalytica - der Wahl-O-Mat für Twitter-Accounts" />
+    <meta property="og:description"
+        content="Der Wahl-O-Mat braucht dir zu lange zum Ausfüllen? Gib deinen Twitter-Handle ein und wir finden heraus, welche Partei am besten zu dir passt!" />
+    <meta property="og:image" content="https://de.chirpanalytica.com/images/sqare.jpg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/github-corner.css">
+    <link rel="stylesheet" type="text/css" href="css/predict.css">
 </head>
 
 <body>
-	<div class="d-flex flex-column h-100">
-		<section class="sec1 flex-grow-1 flex-shrink-0 container animated fadeIn">
-			<a href="https://github.com/PaulGoldschmidt/chirpanalytica" class="github-corner"
-				aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250"
-					style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
-					aria-hidden="true">
-					<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-					<path
-						d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-						fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-					<path
-						d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-						fill="currentColor" class="octo-body"></path>
-				</svg></a>
-			<div>
-				<h1>Chirpanalytica</h1>
-				<p style="margin-top:10px;margin-bottom:10px;">Der Wahl-O-Mat braucht dir zu lange zum Ausfüllen? Gib
-					deinen Twitter-Handle ein und wir finden heraus, welche Partei am besten zu dir passt!</p>
-				<form id="requester" method="get">
-					<input id="requester-name" name="name" type="text" placeholder="@maxmusternutzer"></input>
-					<input type="submit"></input>
-				</form>
-				<p style="margin-top:10px;margin-bottom:10px;">Achtung: Es werden nur Accounts mit deutschsprachigen
-					Tweets
-					korrekt analysiert, die Abfrage kann bis zu 2 Minuten brauchen.</p>
-				<div id="loadingresults" class="gone">
-					<img id="loading-image" width="100" height="100" src="chirploader.gif" alt="Loading..." />
-				</div>
-				<p id="internal-error" class="gone"><i>Leider ist ein Severfehler aufgetreten, wurde der Nutzername
-						richtig
-						geschrieben? 🐦</i></p>
-			</div>
+    <div class="d-flex flex-column h-100">
+        <section class="sec1 flex-grow-1 flex-shrink-0 container animated fadeIn">
+            <a href="https://github.com/PaulGoldschmidt/chirpanalytica" class="github-corner"
+                aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250"
+                    style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+                    aria-hidden="true">
+                    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+                    <path
+                        d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+                        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+                    <path
+                        d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+                        fill="currentColor" class="octo-body"></path>
+                </svg></a>
+            <div>
+                <h1>Chirpanalytica</h1>
+                <p style="margin-top:10px;margin-bottom:10px;">Der Wahl-O-Mat braucht dir zu lange zum Ausfüllen? Gib
+                    deinen Twitter-Handle ein und wir finden heraus, welche Partei am besten zu dir passt!</p>
+                <form id="requester" method="get">
+                    <input id="requester-name" name="name" type="text" placeholder="@maxmusternutzer"></input>
+                    <input type="submit" value="Analysieren"></input>
+                </form>
+                <p style="margin-top:10px;margin-bottom:10px;">Achtung: Es werden nur Accounts mit deutschsprachigen
+                    Tweets
+                    korrekt analysiert, die Abfrage kann bis zu 2 Minuten brauchen.</p>
+                <div id="loadingresults" class="gone">
+                    <img id="loading-image" width="100" height="100" src="chirploader.gif" alt="Loading..." />
+                </div>
+                <p id="internal-error" class="gone"><i>Leider ist ein Severfehler aufgetreten, wurde der Nutzername
+                        richtig
+                        geschrieben? 🐦</i></p>
+            </div>
 
-			<div id="chart" class="gone">
-				<p style="margin-top:10px;margin-bottom:10px;"></p>Deine Übereinstimmung mit den folgenden Parteien (%):
-				</p>
-				<div class="d-flex">
-					<ul id="numbers">
-						<li><span></span></li>
-						<li><span>90%</span></li>
-						<li><span>80%</span></li>
-						<li><span>70%</span></li>
-						<li><span>60%</span></li>
-						<li><span>50%</span></li>
-						<li><span>40%</span></li>
-						<li><span>30%</span></li>
-						<li><span>20%</span></li>
-						<li><span>10%</span></li>
-						<li><span></span></li>
-					</ul>
-					<ul id="bars" class="flex-grow-1 d-flex">
-						<p>In Arbeit...</p>
-					</ul>
-				</div>
-			</div>
-		</section>
+            <div id="chart" class="gone">
+                <p style="margin-top:10px;margin-bottom:10px;"></p>Deine Übereinstimmung mit den folgenden Parteien (%):
+                </p>
+                <div class="d-flex">
+                    <ul id="numbers">
+                        <li><span></span></li>
+                        <li><span>90%</span></li>
+                        <li><span>80%</span></li>
+                        <li><span>70%</span></li>
+                        <li><span>60%</span></li>
+                        <li><span>50%</span></li>
+                        <li><span>40%</span></li>
+                        <li><span>30%</span></li>
+                        <li><span>20%</span></li>
+                        <li><span>10%</span></li>
+                        <li><span></span></li>
+                    </ul>
+                    <ul id="bars" class="flex-grow-1 d-flex">
+                        <p>In Arbeit...</p>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-		<section class="sec3 flex-shrink-0 container">
-			<p>&copy; 2021 Chirpanalytica | <a href="https://p3g3.de/chirpanalytica" target="_blank">Über dieses
-					Projekt</a>
-				<br> <a href="privacypolicy" target="_blank">Datenschutz</a> und <a href="imprint"
-					target="_blank">Impressum</a>
-			</p>
-		</section>
-	</div>
+        <section class="sec3 flex-shrink-0 container p-4">
+            <p>&copy; 2021 Chirpanalytica | <a href="https://p3g3.de/chirpanalytica" target="_blank">Über dieses
+                    Projekt</a>
+                <br> <a href="privacypolicy" target="_blank">Datenschutz</a> und <a href="imprint"
+                    target="_blank">Impressum</a>
+            </p>
+        </section>
+    </div>
 
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-		integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-		crossorigin="anonymous"></script>
-	<!-- Google Analytics alternative that protects customers' privacy -->
-	<script src="js/matomo.js"></script>
-	<!-- Requesting logic for communication with the backend -->
-	<script src="js/api.js"></script>
-	<script src="js/smooth-scroll.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+    <!-- Google Analytics alternative that protects customers' privacy -->
+    <script src="js/matomo.js"></script>
+    <!-- Requesting logic for communication with the backend -->
+    <script src="js/api.js"></script>
+    <script src="js/smooth-scroll.js"></script>
 </body>
 
 </html>
