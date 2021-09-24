@@ -26,4 +26,4 @@ This project wouldn't be possible without the help of hundreds and thousands of 
 
 ### Footer
 
-[Paul Goldschmidt](https://paul-goldschmidt.de), 2020-2021
+[Paul Goldschmidt](https://paul-goldschmidt.de) and [Torben Wetter](https://wetter.codes/), 2020-2021
