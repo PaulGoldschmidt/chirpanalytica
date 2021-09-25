@@ -53,7 +53,7 @@ def predict_party(twitter_handle):
 
     except:
         print("Request failed.")
-        return dict({"success": False, "error": "Error while downloading Tweets, maybe 440?", "data": {}, "tweetsread": {0}})
+        return dict({"success": False, "error": 440, "data": {}, "tweetsread": 0})
 
     for tweet in tweets:
         prediction = predict.predict(tweet)
@@ -73,8 +73,5 @@ def predict_party(twitter_handle):
 # Only executed when called manually
 if __name__ == '__main__':
     result = predict_party(sys.argv[1])
-    if (result["success"] == True):
-        print(json.dumps(result))
-        exit(0)
-    # Print error
-    print(json.dumps(result["error"]))
+    print(json.dumps(result))
+    exit(0)
