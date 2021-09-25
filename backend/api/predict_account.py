@@ -52,9 +52,8 @@ def predict_party(twitter_handle):
                 break
 
     except:
-        print("Request failed.")
-        return dict({"success": False, "error": 440, "data": {}, "tweetsread": 0})
-
+        return dict({"success": False, "error": 404, "data": {}, "tweetsread": 0})
+    
     for tweet in tweets:
         prediction = predict.predict(tweet)
         tweetsread = tweetsread + 1
@@ -62,6 +61,9 @@ def predict_party(twitter_handle):
             if key not in predictions.keys():
                 predictions[key] = []
             predictions[key].append(value)
+
+    if tweetsread == 0:
+        return dict({"success": False, "error": 204, "data": {}, "tweetsread": 0})
 
     for key, value in predictions.items():
         predictions[key] = statistics.mean(value)
